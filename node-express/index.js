@@ -3,10 +3,12 @@ http = require('http');
 
 const morgan = require('morgan');
 const hostname = 'localhost';
+const dishRouter = require('./routes/dishRoutes');
 const port = 3000;
 
 const app = express();
 app.use(morgan('dev'));
+app.use('/dishes',dishRouter);
 app.use(express.static(__dirname + "/public"));
 app.use((req, res, next) => {
   
